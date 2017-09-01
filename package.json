@@ -4,6 +4,9 @@
   "description": "A consumer feedback email service.",
   "main": "index.js",
   "scripts": {
+    "client": "npm run start --prefix client",
+    "server": "nodemon index.js",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
     "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -14,6 +17,7 @@
   "author": "Micah Dunson",
   "license": "ISC",
   "dependencies": {
+    "concurrently": "^3.5.0",
     "cookie-session": "^1.3.1",
     "express": "^4.15.4",
     "mongoose": "^4.11.9",
