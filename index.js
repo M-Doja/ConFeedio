@@ -1,13 +1,17 @@
 const express  = require('express'),
       mongoose = require('mongoose'),
+      cookieSession = require('cookie-session'),
+      passport = require('passport'),
       port     = process.env.PORT || 3000,
       keys     = require('./config/keys'),
       app      = express();
 
+require('./models/User');
+require('./services/passport');
 
 // DATABASE CONNECTION
-mongoose.Promise = global.Promise;
-mongoose.connect(keys.testDB_URI, {
+// mongoose.Promise = global.Promise;
+mongoose.connect(keys.prodDB_URI, {
   useMongoClient: true
 }, (err, db) => {
   if (err) {
@@ -17,7 +21,16 @@ mongoose.connect(keys.testDB_URI, {
   db = db;
 });
 
-require('./services/passport');
+app.use(
+  cookieSession({
+    maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days will auto expire
+    keys: [keys.cookieKey]
+  })
+);
+
+app.use(passport.initialize());
+app.use(passport.session());
+
 require('./routes/authRoutes')(app);
 
 
