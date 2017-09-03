@@ -10,7 +10,7 @@ require('./models/User');
 require('./services/passport');
 
 // DATABASE CONNECTION
-// mongoose.Promise = global.Promise;
+mongoose.Promise = global.Promise;
 mongoose.connect(keys.prodDB_URI, {
   useMongoClient: true
 }, (err, db) => {
