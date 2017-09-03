@@ -11,7 +11,7 @@ require('./services/passport');
 
 // DATABASE CONNECTION
 // mongoose.Promise = global.Promise;
-mongoose.connect(keys.prodDB_URI, {
+mongoose.connect(keys.testDB_URI, {
   useMongoClient: true
 }, (err, db) => {
   if (err) {
