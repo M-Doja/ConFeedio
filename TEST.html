@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <h1>get music</h1>
+  <body>
+    <script>
+    // write func to make ajax req to get json blob
+    // use fetch func
+     // https://rallycoding.herokuapp.com/api/music_albums
+
+
+    // function fetchMusicAlbums(){
+    //   fetch('https://rallycoding.herokuapp.com/api/music_albums')
+    //     .then(res => res.json())
+    //     .then(json => console.log(json));
+    // }
+    // fetchMusicAlbums();
+
+    const fetchMusicAlbums = async () => {
+      const res = await fetch('https://rallycoding.herokuapp.com/api/music_albums')
+      const json =  await res.json()
+      console.log(json);
+    }
+    fetchMusicAlbums();
+
+    </script>
+  </body>
+</html>
