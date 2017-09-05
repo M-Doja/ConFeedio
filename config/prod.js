@@ -6,6 +6,6 @@ module.exports = {
   googleRedirectURL: process.env.GOOGLE_REDIRECT_URL,
   stripePublishableKey: process.env.STRIPE_PUBLISHABLE_T_KEY,
   stripeSecretKey: process.env.STRIPE_SECRET_T_KEY,
-  sendGridKey: SEND_GRID_KEY,
-  redirectDomain: "https://confeedio.herokuapp.com/" 
+  sendGridKey: process.env.SEND_GRID_KEY,
+  redirectDomain: "https://confeedio.herokuapp.com/"
 }
