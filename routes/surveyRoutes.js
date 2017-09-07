@@ -22,9 +22,21 @@ module.exports = app => {
       _user:req.user.id,
       dateSent: Date.now()
     });
-
     // Place to send email
     const mailer = new Mailer(survey, surveyTemplate(survey));
-    mailer.send();
+    try {
+       mailer.send().then((err) => {
+         if (err) console.log(err);
+          survey.save();
+       });
+
+      req.user.credits --;
+      var user =  req.user.save();
+
+      res.send(user);
+    } catch (err) {
+      res.status(422).send(err);
+    }
+
   });
 };

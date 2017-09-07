@@ -1,8 +1,7 @@
 const keys = require('../../config/keys')
 
-module.export = survey => {
-  return `<!DOCTYPE html>
-  <html>
+module.exports = (survey) => {
+  return `<html>
     <head>
       <meta charset="utf-8">
       <title></title>
